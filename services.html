@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services & Pricing — Heavenly Nails & Spa</title>
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .page-head {
+    padding: 80px 0 56px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .page-head .wrap {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end;
+  }
+  .page-head h1 {
+    font-size: clamp(56px, 7vw, 96px);
+    font-style: italic; font-weight: 400;
+  }
+  .page-head h1 em { color: var(--accent); font-style: normal; }
+  .page-head p { font-size: 18px; max-width: 46ch; }
+
+  .menu-grid {
+    display: grid; grid-template-columns: 220px 1fr; gap: 64px;
+  }
+  .menu-nav {
+    position: sticky; top: 110px; align-self: start;
+  }
+  .menu-nav ul { list-style: none; padding: 0; margin: 0; }
+  .menu-nav li {
+    padding: 10px 0; border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .menu-nav li a { color: var(--ink-2); display: flex; justify-content: space-between; }
+  .menu-nav li a:hover { color: var(--accent); }
+  .menu-nav li.on a { color: var(--accent); }
+
+  .menu-section { margin-bottom: 80px; }
+  .menu-section > .cat-head {
+    display: grid; grid-template-columns: 60px 1fr; gap: 24px;
+    border-top: 1px solid var(--ink); padding-top: 20px; margin-bottom: 32px; align-items: end;
+  }
+  .menu-section .cat-num {
+    font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  }
+  .menu-section .cat-title h2 {
+    font-size: clamp(32px, 4vw, 48px); font-style: italic; font-weight: 400;
+  }
+  .menu-section .cat-title p {
+    font-size: 15px; color: var(--muted); margin: 6px 0 0; max-width: 60ch;
+  }
+
+  .menu-item {
+    display: grid; grid-template-columns: 60px 1fr auto; gap: 24px;
+    padding: 20px 0; border-bottom: 1px dashed var(--line);
+    align-items: baseline;
+  }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item .num { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+  .menu-item .name {
+    font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--ink);
+  }
+  .menu-item .name small {
+    font-family: var(--font-body); font-size: 13px; color: var(--muted); font-weight: 400;
+    margin-left: 12px;
+    letter-spacing: 0;
+  }
+  .menu-item .desc { font-size: 14px; color: var(--ink-2); margin-top: 6px; max-width: 64ch; }
+  .menu-item .price {
+    font-family: var(--font-display); font-size: 24px; color: var(--accent);
+    white-space: nowrap;
+  }
+  .menu-item .price small {
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    display: block; text-align: right;
+  }
+
+  .menu-note {
+    background: var(--bg-2); border-radius: 14px; padding: 28px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
+    margin-top: 48px;
+  }
+  .menu-note .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .menu-note p { margin: 0; font-size: 14px; }
+
+  @media (max-width: 900px) {
+    .page-head .wrap { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .menu-nav { position: static; }
+    .menu-item { grid-template-columns: 1fr auto; }
+    .menu-item .num { display:none; }
+  }
+</style>
+</head>
+<body data-palette="mocha" data-mode="light" data-cta="pill">
+<div id="site-header"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Services · Pricing</span>
+        <h1 style="margin-top:16px">The <em>menu</em>.</h1>
+      </div>
+      <p>
+        Everything on the list below is bookable online. Prices are starting points —
+        longer nails, extra art, or extensions bump the total. We'll always confirm
+        before we begin.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="menu-grid">
+
+      <aside class="menu-nav">
+        <ul>
+          <li class="on"><a href="#manicures"><span>I · Manicures</span><span>→</span></a></li>
+          <li><a href="#pedicures"><span>II · Pedicures</span><span>→</span></a></li>
+          <li><a href="#enhancements"><span>III · Enhancements</span><span>→</span></a></li>
+          <li><a href="#nailart"><span>IV · Nail Art</span><span>→</span></a></li>
+          <li><a href="#waxing"><span>V · Waxing</span><span>→</span></a></li>
+          <li><a href="#kids"><span>VI · Kids & Men</span><span>→</span></a></li>
+        </ul>
+        <a href="book.html" class="btn" style="margin-top:24px; width:100%; justify-content:center">Book now →</a>
+      </aside>
+
+      <div>
+
+        <div class="menu-section" id="manicures">
+          <div class="cat-head">
+            <div class="cat-num">I</div>
+            <div class="cat-title">
+              <h2>Manicures</h2>
+              <p>Classic shape, polish, and a little quiet. Gel and dip add two weeks of wear.</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="num">01</div>
+            <div>
+              <div class="name">Classic Manicure <small>35 min</small></div>
+              <div class="desc">Shape, cuticle care, hand massage, polish of your choice. Our most-booked service.</div>
+            </div>
+            <div class="price">$28</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">02</div>
+            <div>
+              <div class="name">Gel Manicure <small>50 min</small></div>
+              <div class="desc">High-shine finish. Two-week wear. Soak-off included next visit.</div>
+            </div>
+            <div class="price">$42</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">03</div>
+            <div>
+              <div class="name">Dip Powder Manicure <small>60 min</small></div>
+              <div class="desc">Durable, lightweight, three-week wear. 40+ shades in-studio.</div>
+            </div>
+            <div class="price">$55</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">04</div>
+            <div>
+              <div class="name">French Manicure <small>45 min</small></div>
+              <div class="desc">Classic or modern micro-French. Linh's signature.</div>
+            </div>
+            <div class="price">$38</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">05</div>
+            <div>
+              <div class="name">Polish Change · Hands <small>15 min</small></div>
+              <div class="desc">Quick swap of regular polish. Gel polish change, $25.</div>
+            </div>
+            <div class="price">$15</div>
+          </div>
+        </div>
+
+        <div class="menu-section" id="pedicures">
+          <div class="cat-head">
+            <div class="cat-num">II</div>
+            <div class="cat-title">
+              <h2>Pedicures</h2>
+              <p>Warm soak, exfoliation, callus care, massage. Waterless option for dry-skin seasons.</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="num">06</div>
+            <div>
+              <div class="name">Classic Pedicure <small>45 min</small></div>
+              <div class="desc">Soak, shape, cuticle, exfoliation, 5-min massage, polish.</div>
+            </div>
+            <div class="price">$38</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">07</div>
+            <div>
+              <div class="name">Heavenly Pedicure <small>70 min</small></div>
+              <div class="desc">House specialty. Sugar scrub, clay mask, hot stone, 10-min foot-and-calf massage.</div>
+            </div>
+            <div class="price">$65</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">08</div>
+            <div>
+              <div class="name">Waterless Pedicure <small>55 min</small></div>
+              <div class="desc">Sustainable, hygienic, ideal for dry or sensitive skin.</div>
+            </div>
+            <div class="price">$55</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">09</div>
+            <div>
+              <div class="name">Gel Pedicure <small>60 min</small></div>
+              <div class="desc">Classic pedicure with gel polish finish. Four-week wear.</div>
+            </div>
+            <div class="price">$52</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">10</div>
+            <div>
+              <div class="name">Callus Removal Add-on</div>
+              <div class="desc">Deep callus work with any pedicure.</div>
+            </div>
+            <div class="price">+$15</div>
+          </div>
+        </div>
+
+        <div class="menu-section" id="enhancements">
+          <div class="cat-head">
+            <div class="cat-num">III</div>
+            <div class="cat-title">
+              <h2>Enhancements</h2>
+              <p>Acrylics, extensions, overlays, and sculpted nails. Length & shape your call.</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="num">11</div>
+            <div>
+              <div class="name">Acrylic Full Set <small>75 min</small></div>
+              <div class="desc">Strong, traditional acrylic. Almond, coffin, stiletto, square — you choose.</div>
+            </div>
+            <div class="price">$65</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">12</div>
+            <div>
+              <div class="name">Acrylic Fill <small>50 min</small></div>
+              <div class="desc">Every 2–3 weeks.</div>
+            </div>
+            <div class="price">$45</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">13</div>
+            <div>
+              <div class="name">Gel Extensions <small>85 min</small></div>
+              <div class="desc">Natural-look extensions with builder gel. Lightweight and flexible.</div>
+            </div>
+            <div class="price">$80</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">14</div>
+            <div>
+              <div class="name">Sculpted Nails <small>90 min</small></div>
+              <div class="desc">Custom form, sculpted length. Stiletto, pipe, ballerina.</div>
+            </div>
+            <div class="price">$85</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">15</div>
+            <div>
+              <div class="name">Nail Repair <small>per nail</small></div>
+              <div class="desc">Broken, chipped, or cracked. Fix without re-doing the set.</div>
+            </div>
+            <div class="price">$8</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">16</div>
+            <div>
+              <div class="name">Synthetic Removal <small>30 min</small></div>
+              <div class="desc">Soak-off, buff, cuticle oil, recovery manicure optional.</div>
+            </div>
+            <div class="price">$20</div>
+          </div>
+        </div>
+
+        <div class="menu-section" id="nailart">
+          <div class="cat-head">
+            <div class="cat-num">IV</div>
+            <div class="cat-title">
+              <h2>Nail Art</h2>
+              <p>Per-nail pricing. Bring a reference or let Thuy freestyle.</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="num">17</div>
+            <div>
+              <div class="name">Simple Design <small>per nail</small></div>
+              <div class="desc">Line work, dots, single accent, basic French tip.</div>
+            </div>
+            <div class="price">$3</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">18</div>
+            <div>
+              <div class="name">Intermediate Art <small>per nail</small></div>
+              <div class="desc">Marble, ombré, chrome powder, nail decals.</div>
+            </div>
+            <div class="price">$6</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">19</div>
+            <div>
+              <div class="name">Hand-painted Art <small>per nail</small></div>
+              <div class="desc">Florals, portraits, custom reference work.</div>
+            </div>
+            <div class="price">$10+</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">20</div>
+            <div>
+              <div class="name">Bridal / Event Design <small>full set</small></div>
+              <div class="desc">Consultation included. Book 2 weeks ahead.</div>
+            </div>
+            <div class="price">$120+</div>
+          </div>
+        </div>
+
+        <div class="menu-section" id="waxing">
+          <div class="cat-head">
+            <div class="cat-num">V</div>
+            <div class="cat-title">
+              <h2>Waxing</h2>
+              <p>Face and brow services. Soft wax, warm room.</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="num">21</div>
+            <div><div class="name">Eyebrow</div></div>
+            <div class="price">$12</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">22</div>
+            <div><div class="name">Upper Lip</div></div>
+            <div class="price">$8</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">23</div>
+            <div><div class="name">Full Face</div></div>
+            <div class="price">$40</div>
+          </div>
+        </div>
+
+        <div class="menu-section" id="kids">
+          <div class="cat-head">
+            <div class="cat-num">VI</div>
+            <div class="cat-title">
+              <h2>Kids & Men</h2>
+              <p>Sized-down services for small hands and straightforward tune-ups.</p>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="num">24</div>
+            <div>
+              <div class="name">Kids' Manicure <small>under 12</small></div>
+              <div class="desc">Shape, cuticle, and polish. Choose from our "princess" shelf.</div>
+            </div>
+            <div class="price">$18</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">25</div>
+            <div>
+              <div class="name">Kids' Pedicure <small>under 12</small></div>
+            </div>
+            <div class="price">$25</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">26</div>
+            <div>
+              <div class="name">Men's Manicure</div>
+              <div class="desc">Shape, cuticle, buff, hand massage. Clear or matte finish.</div>
+            </div>
+            <div class="price">$25</div>
+          </div>
+          <div class="menu-item">
+            <div class="num">27</div>
+            <div><div class="name">Men's Pedicure</div></div>
+            <div class="price">$42</div>
+          </div>
+        </div>
+
+        <div class="menu-note">
+          <div class="dot"></div>
+          <p>
+            <strong>Pricing notes.</strong>
+            Longer nails, extra length, and intricate art may add to the total.
+            We'll always walk you through final pricing before we begin.
+            Gratuity not included — cash preferred, Venmo welcome.
+          </p>
+          <a href="book.html" class="btn">Book →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>HNS.bootstrap("services");</script>
+</body>
+</html>

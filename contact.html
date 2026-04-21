@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visit & Contact — Heavenly Nails & Spa</title>
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .page-head {
+    padding: 80px 0 48px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .page-head .wrap {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end;
+  }
+  .page-head h1 {
+    font-size: clamp(56px, 7vw, 96px);
+    font-style: italic; font-weight: 400;
+  }
+  .page-head h1 em { color: var(--accent); font-style: normal; }
+
+  .visit-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px;
+  }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 36px;
+  }
+  .info-card h3 { font-family: var(--font-display); font-style: italic; font-size: 32px; margin-bottom: 20px; }
+  .info-card .row {
+    display: grid; grid-template-columns: 110px 1fr;
+    gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line);
+    align-items: baseline;
+  }
+  .info-card .row:last-child { border-bottom: none; }
+  .info-card .k {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .info-card .v { font-size: 15px; color: var(--ink); }
+  .info-card .v a { color: var(--accent); }
+  .info-card .v strong { font-family: var(--font-display); font-size: 22px; font-weight: 500; }
+
+  .map-card {
+    position: relative;
+    border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    aspect-ratio: 4/3;
+  }
+  .map-card svg { width: 100%; height: 100%; display: block; }
+  .map-pin {
+    position: absolute; left: 52%; top: 48%;
+    transform: translate(-50%, -100%);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .map-pin .pin-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px 14px; box-shadow: var(--shadow-md);
+    font-size: 12px; min-width: 180px;
+  }
+  .map-pin .pin-card .name {
+    font-family: var(--font-display); font-size: 15px; font-weight: 500;
+  }
+  .map-pin .pin-card .meta {
+    font-family: var(--font-mono); font-size: 10px; color: var(--muted);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .map-pin .pin-dot {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--card);
+    margin-top: 4px;
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 30%, transparent);
+  }
+
+  .faq { margin-top: 80px; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+  details.faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+  }
+  details.faq-item summary {
+    font-family: var(--font-display); font-size: 22px; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--ink);
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: "+"; font-family: var(--font-mono); font-size: 18px; color: var(--accent);
+  }
+  details.faq-item[open] summary::after { content: "–"; }
+  details.faq-item p { margin-top: 10px; font-size: 15px; }
+
+  .contact-form {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 40px; margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px;
+  }
+  .contact-form .span2 { grid-column: 1 / -1; }
+  .contact-form label {
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.2em; color: var(--muted); display: block; margin-bottom: 8px;
+  }
+  .contact-form input, .contact-form textarea, .contact-form select {
+    width: 100%; padding: 14px 16px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    font-family: var(--font-body); font-size: 15px;
+  }
+  .contact-form textarea { min-height: 110px; }
+
+  @media (max-width: 900px) {
+    .page-head .wrap, .visit-grid, .faq-grid, .contact-form { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-palette="mocha" data-mode="light" data-cta="pill">
+<div id="site-header"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Visit us</span>
+        <h1 style="margin-top:16px">Come by <em>Waukegan</em><br/>Road.</h1>
+      </div>
+      <p>
+        A small storefront between the post office and the bakery. Plenty of parking out front,
+        and the bus stops a block away.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+
+    <div class="visit-grid">
+      <div class="info-card">
+        <h3>The essentials</h3>
+        <div class="row">
+          <span class="k">Address</span>
+          <span class="v"><strong>1625 Waukegan Rd</strong><br/>Glenview, IL 60025</span>
+        </div>
+        <div class="row">
+          <span class="k">Phone</span>
+          <span class="v"><a href="tel:18474864131"><strong>(847) 486-4131</strong></a><br/>Text preferred for quick questions</span>
+        </div>
+        <div class="row">
+          <span class="k">Hours</span>
+          <span class="v">
+            Mon–Fri · 9:30a – 7:00p<br/>
+            Sat · 9:30a – 6:00p<br/>
+            Sun · by appointment
+          </span>
+        </div>
+        <div class="row">
+          <span class="k">Amenities</span>
+          <span class="v">Good for kids · Restroom · Credit cards · Venmo · Free parking</span>
+        </div>
+        <div class="row">
+          <span class="k">Language</span>
+          <span class="v">English · Tiếng Việt</span>
+        </div>
+
+        <div style="margin-top:28px; display:flex; gap:10px; flex-wrap:wrap">
+          <a href="book.html" class="btn">Book online →</a>
+          <a href="tel:18474864131" class="btn ghost">Call</a>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <!-- Stylized abstract map -->
+        <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <pattern id="grain" width="3" height="3" patternUnits="userSpaceOnUse">
+              <rect width="3" height="3" fill="none" />
+              <circle cx="1" cy="1" r="0.4" fill="currentColor" opacity="0.08" />
+            </pattern>
+          </defs>
+          <rect width="600" height="450" fill="var(--bg-2)" />
+          <rect width="600" height="450" fill="url(#grain)" style="color: var(--ink)" />
+          <!-- Streets -->
+          <path d="M0 220 L600 200" stroke="var(--line)" stroke-width="36" fill="none"/>
+          <path d="M0 220 L600 200" stroke="var(--bg)" stroke-width="28" fill="none"/>
+          <path d="M310 0 L340 450" stroke="var(--line)" stroke-width="30" fill="none"/>
+          <path d="M310 0 L340 450" stroke="var(--bg)" stroke-width="22" fill="none"/>
+          <path d="M0 330 L600 360" stroke="var(--line)" stroke-width="18" fill="none"/>
+          <path d="M0 330 L600 360" stroke="var(--bg)" stroke-width="12" fill="none"/>
+          <path d="M120 0 L140 450" stroke="var(--line)" stroke-width="12" fill="none"/>
+          <path d="M120 0 L140 450" stroke="var(--bg)" stroke-width="7" fill="none"/>
+          <!-- Parks / blocks -->
+          <rect x="30" y="40" width="180" height="130" fill="var(--bg)" stroke="var(--line)" />
+          <rect x="400" y="40" width="160" height="120" fill="var(--bg)" stroke="var(--line)" />
+          <rect x="30" y="260" width="240" height="140" fill="var(--bg)" stroke="var(--line)" />
+          <rect x="400" y="240" width="170" height="90" fill="var(--bg)" stroke="var(--line)" />
+          <!-- Street labels -->
+          <text x="40" y="215" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" letter-spacing="2">WAUKEGAN RD →</text>
+          <text x="350" y="30" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" letter-spacing="2">GLENVIEW RD ↑</text>
+        </svg>
+        <div class="map-pin">
+          <div class="pin-card">
+            <div class="name">Heavenly Nails & Spa</div>
+            <div class="meta">1625 Waukegan Rd</div>
+          </div>
+          <div class="pin-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="section-head">
+        <span class="eyebrow">Good to know</span>
+        <h2 style="margin-top:8px">Questions, answered.</h2>
+      </div>
+      <div class="faq-grid">
+        <details class="faq-item" open>
+          <summary>Do I need an appointment?</summary>
+          <p>Walk-ins are always welcome, but weekends and Fridays book up — we recommend reserving online or calling a day or two ahead.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How early should I arrive?</summary>
+          <p>Five minutes early is plenty. If you're a new guest, ten — we'll walk you through the polish library and chat about what you're after.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if I need to cancel?</summary>
+          <p>A quick text to (847) 486-4131 any time more than two hours before your appointment is fine — no fee.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you do nails for weddings or events?</summary>
+          <p>Yes. Book a consultation with Thuy at least two weeks out. We can coordinate a bridal party in-studio or travel for groups of six or more.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are kids welcome?</summary>
+          <p>Absolutely — we have a princess polish shelf and do sized-down services for under-12s. We also have a quiet corner if a parent is the one getting pampered.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the studio accessible?</summary>
+          <p>Yes — street-level entrance, accessible restroom, and we can bring a pedicure chair to a standard-height seat if needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What polish brands do you carry?</summary>
+          <p>OPI, DND, The Gel Bottle, and a rotating shelf of five-free brands. If you have a favorite, bring it — we're happy to use your own.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you accept tips on card?</summary>
+          <p>Yes, though cash and Venmo (@heavenlynails-glenview) are most appreciated by the team.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact form -->
+    <form class="contact-form" onsubmit="event.preventDefault(); this.innerHTML = '<div class=\'span2\' style=\'text-align:center;padding:40px 0\'><span class=eyebrow>Thanks —</span><h3 style=\'font-family:var(--font-display);font-style:italic;font-size:32px;margin-top:12px\'>We\\'ll be in touch shortly.</h3></div>';">
+      <div class="span2">
+        <span class="eyebrow">General inquiries</span>
+        <h3 style="font-family:var(--font-display); font-style:italic; font-size:36px; margin-top:10px;">
+          Not ready to book? Ask us anything.
+        </h3>
+      </div>
+      <div>
+        <label>Name</label>
+        <input type="text" required />
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" required />
+      </div>
+      <div>
+        <label>Topic</label>
+        <select>
+          <option>General question</option>
+          <option>Bridal / event inquiry</option>
+          <option>Gift cards</option>
+          <option>Feedback</option>
+          <option>Press & partnerships</option>
+        </select>
+      </div>
+      <div>
+        <label>Preferred reply</label>
+        <select>
+          <option>Email</option>
+          <option>Phone call</option>
+          <option>Text message</option>
+        </select>
+      </div>
+      <div class="span2">
+        <label>Message</label>
+        <textarea required></textarea>
+      </div>
+      <div class="span2">
+        <button type="submit" class="btn lg">Send message →</button>
+      </div>
+    </form>
+
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>HNS.bootstrap("contact");</script>
+</body>
+</html>

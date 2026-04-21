@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book an Appointment — Heavenly Nails & Spa</title>
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .page-head {
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .page-head .wrap {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end;
+  }
+  .page-head h1 {
+    font-size: clamp(56px, 7vw, 88px);
+    font-style: italic; font-weight: 400;
+  }
+  .page-head h1 em { color: var(--accent); font-style: normal; }
+
+  .book-grid {
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px;
+    margin-bottom: 96px;
+  }
+
+  /* Form */
+  form.booking {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 20px; padding: 40px;
+  }
+  form.booking .field { margin-bottom: 26px; }
+  form.booking label {
+    display: block; font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 10px;
+  }
+  form.booking input[type="text"],
+  form.booking input[type="email"],
+  form.booking input[type="tel"],
+  form.booking input[type="date"],
+  form.booking select,
+  form.booking textarea {
+    width: 100%; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--bg); color: var(--ink);
+    font-family: var(--font-body); font-size: 15px;
+  }
+  form.booking input:focus, form.booking select:focus, form.booking textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  form.booking textarea { min-height: 100px; resize: vertical; }
+
+  .service-pick {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .service-pick label {
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-body); font-size: 14px; text-transform: none;
+    letter-spacing: 0; color: var(--ink); margin: 0;
+  }
+  .service-pick label:hover { border-color: var(--accent); }
+  .service-pick input { display: none; }
+  .service-pick input:checked + .inner { color: var(--accent); }
+  .service-pick label:has(input:checked) {
+    background: color-mix(in oklab, var(--accent) 10%, var(--bg));
+    border-color: var(--accent);
+  }
+  .service-pick .inner { display:flex; justify-content:space-between; align-items:center; width:100%; }
+  .service-pick .sp-name { font-weight: 500; }
+  .service-pick .sp-price { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+  .artist-pick {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+  }
+  .artist-pick label {
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 10px; cursor: pointer; text-align: center;
+    font-family: var(--font-body); font-size: 13px; text-transform: none;
+    letter-spacing: 0; color: var(--ink); margin: 0;
+  }
+  .artist-pick input { display:none; }
+  .artist-pick label:has(input:checked) {
+    background: color-mix(in oklab, var(--accent) 10%, var(--bg));
+    border-color: var(--accent); color: var(--accent);
+  }
+  .artist-pick .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--bg-2); display: grid; place-items: center;
+    font-family: var(--font-display); color: var(--ink);
+    margin: 0 auto 8px; border: 1px solid var(--line);
+  }
+
+  .time-pick {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+  }
+  .time-pick label {
+    padding: 12px 8px; border: 1px solid var(--line); border-radius: 10px;
+    font-family: var(--font-mono); font-size: 12px; text-align: center; cursor: pointer;
+    margin: 0; text-transform: none; letter-spacing: 0; color: var(--ink);
+  }
+  .time-pick input { display: none; }
+  .time-pick label:has(input:checked) {
+    background: var(--accent); color: var(--accent-ink); border-color: var(--accent);
+  }
+  .time-pick label.disabled {
+    opacity: 0.35; pointer-events: none; text-decoration: line-through;
+  }
+
+  .field-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+
+  /* Summary side */
+  .summary {
+    position: sticky; top: 110px; align-self: start;
+    background: var(--ink); color: var(--bg);
+    border-radius: 20px; padding: 36px;
+  }
+  .summary h3 {
+    font-family: var(--font-display); font-style: italic; font-size: 30px;
+    color: var(--bg);
+  }
+  .summary .sum-row {
+    display: flex; justify-content: space-between; padding: 14px 0;
+    border-bottom: 1px dashed color-mix(in oklab, var(--bg) 20%, transparent);
+    font-size: 14px;
+  }
+  .summary .sum-row .k {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: color-mix(in oklab, var(--bg) 55%, transparent);
+  }
+  .summary .sum-row .v { color: var(--bg); }
+  .summary .total {
+    font-family: var(--font-display); font-size: 40px;
+    margin-top: 20px; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .summary .total small {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+    color: color-mix(in oklab, var(--bg) 55%, transparent);
+  }
+  .summary .promo-applied {
+    margin-top: 20px; padding: 14px;
+    background: color-mix(in oklab, var(--accent) 30%, var(--ink));
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  .summary .promo-applied strong { color: var(--accent); }
+
+  .confirmation {
+    background: var(--card); border: 1px solid var(--accent); border-radius: 20px;
+    padding: 48px; text-align: center; display: none;
+  }
+  .confirmation.on { display: block; }
+  .confirmation .check {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--accent); color: var(--accent-ink);
+    display: grid; place-items: center; margin: 0 auto 24px;
+    font-family: var(--font-display); font-size: 36px;
+  }
+
+  @media (max-width: 900px) {
+    .page-head .wrap { grid-template-columns: 1fr; }
+    .book-grid { grid-template-columns: 1fr; }
+    .summary { position: static; }
+    .service-pick, .field-row { grid-template-columns: 1fr; }
+    .artist-pick { grid-template-columns: repeat(2, 1fr); }
+    .time-pick { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body data-palette="mocha" data-mode="light" data-cta="pill">
+<div id="site-header"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Booking</span>
+        <h1 style="margin-top:16px">Reserve a <em>quiet</em><br/>hour.</h1>
+      </div>
+      <p>
+        Pick a service, artist, and time — we'll confirm by text within the hour.
+        Prefer to talk? Call <strong>(847) 486-4131</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="book-grid">
+
+      <div>
+        <div class="confirmation" id="confirmation">
+          <div class="check">✓</div>
+          <span class="eyebrow">Booking request received</span>
+          <h2 style="margin-top:12px; font-style:italic" id="conf-title">You're on the book.</h2>
+          <p style="margin-top:16px; font-size:16px" id="conf-body">
+            We'll text you within the hour to confirm.
+          </p>
+          <button class="btn ghost" id="conf-reset" style="margin-top:16px">Book another →</button>
+        </div>
+
+        <form class="booking" id="booking-form">
+          <div class="field">
+            <label>01 — Service</label>
+            <div class="service-pick" id="svc">
+              <label><input type="radio" name="service" value="Classic Manicure|28" data-price="28"><div class="inner"><span class="sp-name">Classic Manicure</span><span class="sp-price">$28 · 35min</span></div></label>
+              <label><input type="radio" name="service" value="Gel Manicure|42" data-price="42" checked><div class="inner"><span class="sp-name">Gel Manicure</span><span class="sp-price">$42 · 50min</span></div></label>
+              <label><input type="radio" name="service" value="Dip Powder|55" data-price="55"><div class="inner"><span class="sp-name">Dip Powder</span><span class="sp-price">$55 · 60min</span></div></label>
+              <label><input type="radio" name="service" value="Classic Pedicure|38" data-price="38"><div class="inner"><span class="sp-name">Classic Pedicure</span><span class="sp-price">$38 · 45min</span></div></label>
+              <label><input type="radio" name="service" value="Heavenly Pedicure|65" data-price="65"><div class="inner"><span class="sp-name">Heavenly Pedicure</span><span class="sp-price">$65 · 70min</span></div></label>
+              <label><input type="radio" name="service" value="Acrylic Full Set|65" data-price="65"><div class="inner"><span class="sp-name">Acrylic Full Set</span><span class="sp-price">$65 · 75min</span></div></label>
+              <label><input type="radio" name="service" value="French Manicure|38" data-price="38"><div class="inner"><span class="sp-name">French Manicure</span><span class="sp-price">$38 · 45min</span></div></label>
+              <label><input type="radio" name="service" value="Gel Extensions|80" data-price="80"><div class="inner"><span class="sp-name">Gel Extensions</span><span class="sp-price">$80 · 85min</span></div></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>02 — Artist</label>
+            <div class="artist-pick" id="artists">
+              <label><input type="radio" name="artist" value="Any available" checked><div class="avatar">∞</div>Any available</label>
+              <label><input type="radio" name="artist" value="Linh Tran"><div class="avatar">L</div>Linh</label>
+              <label><input type="radio" name="artist" value="Thuy Nguyen"><div class="avatar">T</div>Thuy</label>
+              <label><input type="radio" name="artist" value="Anh Pham"><div class="avatar">A</div>Anh</label>
+              <label><input type="radio" name="artist" value="Mai Le"><div class="avatar">M</div>Mai</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>03 — Date & time</label>
+            <div class="field-row">
+              <input type="date" id="date" required />
+              <select id="day-pref">
+                <option>Morning (9:30 – 12:00)</option>
+                <option selected>Afternoon (12:00 – 4:00)</option>
+                <option>Evening (4:00 – 7:00)</option>
+              </select>
+            </div>
+            <div class="time-pick" id="times" style="margin-top:14px">
+              <label><input type="radio" name="time" value="9:30a">9:30a</label>
+              <label><input type="radio" name="time" value="10:15a">10:15a</label>
+              <label class="disabled"><input type="radio" name="time">11:00a</label>
+              <label><input type="radio" name="time" value="12:30p">12:30p</label>
+              <label><input type="radio" name="time" value="1:15p" checked>1:15p</label>
+              <label><input type="radio" name="time" value="2:00p">2:00p</label>
+              <label class="disabled"><input type="radio" name="time">2:45p</label>
+              <label><input type="radio" name="time" value="3:30p">3:30p</label>
+              <label><input type="radio" name="time" value="4:15p">4:15p</label>
+              <label><input type="radio" name="time" value="5:00p">5:00p</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>04 — Your details</label>
+            <div class="field-row">
+              <input type="text" id="name" placeholder="Full name" required />
+              <input type="tel" id="phone" placeholder="Phone (we'll text to confirm)" required />
+            </div>
+            <input type="email" id="email" placeholder="Email (optional)" style="margin-top:10px" />
+          </div>
+
+          <div class="field">
+            <label>05 — Anything we should know?</label>
+            <textarea id="notes" placeholder="Reference photos, allergies, first-time visitor, bringing a friend..."></textarea>
+          </div>
+
+          <div class="field">
+            <label>Promo code</label>
+            <div class="field-row">
+              <input type="text" id="promo" placeholder="HEAVENLY10 for first-visit paraffin" />
+              <button type="button" class="btn ghost" id="promo-apply">Apply</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn lg" style="width:100%; justify-content:center; padding:20px">
+            Request appointment →
+          </button>
+
+          <p style="font-size:12px; color:var(--muted); margin-top:14px; font-family:var(--font-mono); letter-spacing: 0.05em">
+            By submitting you agree to receive appointment SMS from Heavenly Nails. We never share your info.
+          </p>
+        </form>
+      </div>
+
+      <aside class="summary" id="summary">
+        <span class="eyebrow" style="color:var(--accent)">Your booking</span>
+        <h3 style="margin-top:10px">Heavenly Nails<br/>& Spa</h3>
+        <div style="margin-top:24px">
+          <div class="sum-row"><span class="k">Service</span><span class="v" id="s-service">Gel Manicure</span></div>
+          <div class="sum-row"><span class="k">Artist</span><span class="v" id="s-artist">Any available</span></div>
+          <div class="sum-row"><span class="k">Date</span><span class="v" id="s-date">—</span></div>
+          <div class="sum-row"><span class="k">Time</span><span class="v" id="s-time">1:15p</span></div>
+          <div class="sum-row" style="border-bottom:none"><span class="k">Deposit</span><span class="v">None — pay in studio</span></div>
+        </div>
+        <div class="total">
+          <span>Est. total</span>
+          <span><span id="s-total">$42</span><small style="display:block; text-align:right">USD</small></span>
+        </div>
+        <div class="promo-applied" id="promo-box" style="display:none">
+          <strong>HEAVENLY10 applied</strong> — we'll add a complimentary paraffin hand dip to your visit.
+        </div>
+        <p style="font-size:13px; margin-top:24px; color:color-mix(in oklab, var(--bg) 75%, transparent)">
+          No payment taken online. Cancel or reschedule up to 2 hours before — a quick text to
+          <strong style="color:var(--bg)">(847) 486-4131</strong> is fine.
+        </p>
+      </aside>
+
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>
+  HNS.bootstrap("book");
+
+  // Booking behavior
+  const form = document.getElementById("booking-form");
+  const sService = document.getElementById("s-service");
+  const sArtist = document.getElementById("s-artist");
+  const sDate = document.getElementById("s-date");
+  const sTime = document.getElementById("s-time");
+  const sTotal = document.getElementById("s-total");
+  const promoBox = document.getElementById("promo-box");
+
+  function fmtDate(v) {
+    if (!v) return "—";
+    const d = new Date(v + "T00:00:00");
+    return d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  }
+
+  function updateSummary() {
+    const svc = document.querySelector('input[name="service"]:checked');
+    if (svc) {
+      const [name, price] = svc.value.split("|");
+      sService.textContent = name;
+      sTotal.textContent = "$" + price;
+    }
+    const art = document.querySelector('input[name="artist"]:checked');
+    if (art) sArtist.textContent = art.value;
+    const time = document.querySelector('input[name="time"]:checked');
+    if (time) sTime.textContent = time.value;
+    sDate.textContent = fmtDate(document.getElementById("date").value);
+  }
+  form.addEventListener("change", updateSummary);
+  document.getElementById("date").addEventListener("input", updateSummary);
+
+  // Set min date to today & default to tomorrow
+  const dateInput = document.getElementById("date");
+  const today = new Date();
+  const tomorrow = new Date(today.getTime() + 86400000);
+  const toISO = d => d.toISOString().slice(0,10);
+  dateInput.min = toISO(today);
+  dateInput.value = toISO(tomorrow);
+  updateSummary();
+
+  // Promo
+  document.getElementById("promo-apply").addEventListener("click", () => {
+    const code = document.getElementById("promo").value.trim().toUpperCase();
+    if (code === "HEAVENLY10") {
+      promoBox.style.display = "block";
+    } else if (code.length > 0) {
+      promoBox.style.display = "block";
+      promoBox.innerHTML = `<strong style="color:var(--accent)">Code not recognized</strong> — try HEAVENLY10 for new-guest paraffin.`;
+    }
+  });
+
+  // Submit
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value || "friend";
+    const first = name.split(" ")[0];
+    document.getElementById("conf-title").innerHTML = `You're on the book, <em style="font-style:italic; color:var(--accent)">${first}</em>.`;
+    const d = document.getElementById("s-date").textContent;
+    const t = document.getElementById("s-time").textContent;
+    const s = document.getElementById("s-service").textContent;
+    document.getElementById("conf-body").innerHTML =
+      `Your <strong>${s}</strong> request for <strong>${d}</strong> at <strong>${t}</strong> is in.<br>We'll text you within the hour to confirm.`;
+    form.style.display = "none";
+    document.getElementById("confirmation").classList.add("on");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.getElementById("conf-reset").addEventListener("click", () => {
+    form.style.display = "block";
+    document.getElementById("confirmation").classList.remove("on");
+  });
+</script>
+</body>
+</html>

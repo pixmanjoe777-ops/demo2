@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heavenly Nails & Spa — Glenview's boutique nail studio</title>
+<link rel="stylesheet" href="assets/shared.css" />
+<template id="__bundler_thumbnail" data-bg-color="#f5ede2">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f5ede2"/>
+    <circle cx="600" cy="360" r="180" fill="#7a4a2e"/>
+    <text x="600" y="395" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="180" fill="#f5ede2">H</text>
+    <text x="600" y="620" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="56" fill="#2a1d14">Heavenly Nails &amp; Spa</text>
+    <text x="600" y="680" text-anchor="middle" font-family="ui-monospace, monospace" font-size="20" letter-spacing="6" fill="#8a7663">GLENVIEW · ILLINOIS</text>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  /* Home-specific */
+  /* HERO — split (default) */
+  body[data-hero-variant="split"] .hero {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px;
+    padding: 80px 0 96px; align-items: center;
+  }
+  body[data-hero-variant="split"] .hero-copy h1 { font-style: italic; font-weight: 400; }
+  body[data-hero-variant="split"] .hero-copy h1 em {
+    font-style: normal; color: var(--accent); font-family: var(--font-display);
+  }
+  body[data-hero-variant="split"] .hero-visual {
+    aspect-ratio: 4/5; border-radius: 18px; position: relative;
+  }
+
+  /* HERO — centered */
+  body[data-hero-variant="centered"] .hero {
+    text-align: center; padding: 96px 0 72px; max-width: 880px; margin: 0 auto;
+  }
+  body[data-hero-variant="centered"] .hero h1 { font-size: clamp(64px, 9vw, 120px); }
+  body[data-hero-variant="centered"] .hero-visual { display: none; }
+  body[data-hero-variant="centered"] .hero-stats { justify-content: center; }
+  body[data-hero-variant="centered"] .hero-cta { justify-content: center; }
+  body[data-hero-variant="centered"] .hero-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 56px;
+  }
+  body[data-hero-variant="centered"] .hero-strip .ph { aspect-ratio: 3/4; border-radius: 12px; }
+  body:not([data-hero-variant="centered"]) .hero-strip { display: none; }
+
+  /* HERO — editorial (magazine-style, number + rules) */
+  body[data-hero-variant="editorial"] .hero {
+    padding: 56px 0 72px;
+  }
+  body[data-hero-variant="editorial"] .hero-grid {
+    display: grid; grid-template-columns: 90px 1fr 1fr; gap: 40px; align-items: start;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0;
+  }
+  body[data-hero-variant="editorial"] .hero-issue {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted);
+    writing-mode: vertical-rl; transform: rotate(180deg);
+  }
+  body[data-hero-variant="editorial"] .hero-copy h1 {
+    font-size: clamp(56px, 7vw, 96px);
+    font-style: italic; font-weight: 400;
+  }
+  body[data-hero-variant="editorial"] .hero-visual {
+    aspect-ratio: 3/4; border-radius: 0;
+  }
+  body[data-hero-variant="editorial"] .hero-strip { display: none; }
+
+  .hero-copy .eyebrow { margin-bottom: 24px; display: inline-block; }
+  .hero-copy p.lede {
+    font-size: 19px; color: var(--ink-2); max-width: 48ch; margin: 24px 0 32px;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 48px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .hero-stats .stat .num {
+    font-family: var(--font-display); font-size: 32px; color: var(--ink);
+  }
+  .hero-stats .stat .lbl {
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.18em; color: var(--muted);
+  }
+
+  /* Services strip */
+  .svc-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 28px; position: relative; transition: transform .2s ease, border-color .2s ease;
+  }
+  .svc-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .svc-card .svc-ph {
+    aspect-ratio: 1/1; margin: -28px -28px 20px; border-radius: 14px 14px 0 0;
+    border: none; border-bottom: 1px solid var(--line);
+  }
+  .svc-card h3 {
+    font-size: 24px; margin-bottom: 8px;
+  }
+  .svc-card .price {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .svc-card p { font-size: 14px; margin: 12px 0 0; }
+
+  /* Reviews */
+  .reviews {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .review {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 32px;
+  }
+  .review .stars {
+    color: var(--accent); letter-spacing: 2px; font-size: 14px; margin-bottom: 16px;
+  }
+  .review blockquote {
+    font-family: var(--font-display); font-size: 22px; line-height: 1.35;
+    font-style: italic; font-weight: 400; margin: 0 0 20px; color: var(--ink);
+  }
+  .review .reviewer {
+    display: flex; align-items: center; gap: 12px; font-size: 13px;
+  }
+  .review .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--bg-2); color: var(--ink);
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-size: 15px;
+    border: 1px solid var(--line);
+  }
+  .review .meta { color: var(--muted); font-family: var(--font-mono); font-size: 11px; }
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .team-card .ph { aspect-ratio: 4/5; border-radius: 12px; margin-bottom: 14px; }
+  .team-card h4 { font-family: var(--font-display); font-size: 22px; margin: 0; }
+  .team-card .role {
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .team-card .spec {
+    font-size: 13px; color: var(--ink-2); margin-top: 8px;
+  }
+
+  /* Instagram */
+  .ig-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .ig-grid .ph { aspect-ratio: 1/1; border-radius: 8px; }
+  .ig-head {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;
+  }
+
+  /* Wide callout */
+  .callout {
+    background: var(--ink); color: var(--bg);
+    border-radius: 22px;
+    padding: 72px 64px;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center;
+  }
+  .callout h2 { color: var(--bg); font-style: italic; }
+  .callout .accent { color: var(--accent); }
+  .callout .btn { background: var(--accent); border-color: var(--accent); }
+  .callout-meta {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: color-mix(in oklab, var(--bg) 60%, transparent);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .callout-meta strong { color: var(--bg); font-weight: 500; letter-spacing: 0.1em; }
+
+  /* About strip */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .about .ph { aspect-ratio: 4/5; border-radius: 18px; }
+
+  @media (max-width: 900px) {
+    body[data-hero-variant="split"] .hero,
+    body[data-hero-variant="editorial"] .hero-grid { grid-template-columns: 1fr; }
+    body[data-hero-variant="editorial"] .hero-issue { display: none; }
+    .svc-grid, .team-grid, .reviews { grid-template-columns: 1fr 1fr; }
+    .ig-grid { grid-template-columns: repeat(3, 1fr); }
+    .callout, .about { grid-template-columns: 1fr; padding: 40px; }
+  }
+</style>
+</head>
+<body data-palette="mocha" data-mode="light" data-cta="pill" data-hero-variant="split">
+
+<div id="site-header"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="wrap">
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Glenview · Est. 2004 · Family owned</span>
+        <h1>A quiet hour, <em>beautifully</em><br/>spent.</h1>
+        <p class="lede">
+          Meticulous manicures, restorative pedicures, and thoughtful nail art —
+          in a warm room where nobody rushes you. Walk-ins welcome; online booking preferred.
+        </p>
+        <div class="hero-cta">
+          <a href="book.html" class="btn lg">Book your appointment →</a>
+          <a href="services.html" class="btn ghost lg">See services & pricing</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num">4.2★</div><div class="lbl">308 reviews</div></div>
+          <div class="stat"><div class="num">22 yrs</div><div class="lbl">in Glenview</div></div>
+          <div class="stat"><div class="num">25+</div><div class="lbl">services</div></div>
+        </div>
+      </div>
+      <div class="hero-visual ph">
+        <span class="ph-label">hero/hands-on-marble.jpg · 4:5</span>
+      </div>
+      <!-- Strip shown only in 'centered' variant -->
+      <div class="hero-strip" style="grid-column: 1 / -1">
+        <div class="ph"><span class="ph-label">detail 01</span></div>
+        <div class="ph"><span class="ph-label">detail 02</span></div>
+        <div class="ph"><span class="ph-label">detail 03</span></div>
+        <div class="ph"><span class="ph-label">detail 04</span></div>
+      </div>
+    </div>
+
+    <!-- Editorial-variant alternate markup (hidden unless editorial) -->
+  </section>
+
+  <!-- SERVICES QUICKLINK -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2>Four rooms. One unhurried hour.</h2>
+        <p style="max-width:56ch;font-size:17px;margin-top:16px">
+          A focused menu of the services our regulars book most. Full list — including dip, extensions,
+          and waxing — lives on the <a href="services.html" style="color:var(--accent);border-bottom:1px solid var(--accent)">services page</a>.
+        </p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-ph ph"><span class="ph-label">manicure.jpg</span></div>
+          <span class="price">FROM $28</span>
+          <h3>Classic Manicure</h3>
+          <p>Shape, cuticle, hand massage, polish of your choice. 35 min.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ph ph"><span class="ph-label">gel.jpg</span></div>
+          <span class="price">FROM $42</span>
+          <h3>Gel Manicure</h3>
+          <p>Two-week wear, high-shine finish. Soak-off included next visit.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ph ph"><span class="ph-label">pedicure.jpg</span></div>
+          <span class="price">FROM $45</span>
+          <h3>Heavenly Pedicure</h3>
+          <p>Warm soak, exfoliation, callus care, 10-min foot massage.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ph ph"><span class="ph-label">nailart.jpg</span></div>
+          <span class="price">FROM $10</span>
+          <h3>Nail Art & Designs</h3>
+          <p>French, chrome, decals, hand-painted florals. Per-nail pricing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALLOUT / PROMO -->
+  <section class="wrap">
+    <div class="callout">
+      <div>
+        <span class="eyebrow" style="color:var(--accent)">First visit</span>
+        <h2 style="margin-top:12px">A complimentary <span class="accent">paraffin</span><br/>treatment, on us.</h2>
+        <p style="color:color-mix(in oklab, var(--bg) 70%, transparent); font-size:17px; max-width:46ch; margin-top:20px">
+          Book any manicure or pedicure as a new guest and we'll add a warm paraffin hand dip —
+          the softest way to meet us. Mention code <strong style="color:var(--accent)">HEAVENLY10</strong> when you book.
+        </p>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="book.html" class="btn lg">Claim your first visit →</a>
+          <a href="tel:18474864131" class="btn ghost lg" style="color:var(--bg);border-color:color-mix(in oklab, var(--bg) 30%, transparent)">Or call (847) 486-4131</a>
+        </div>
+      </div>
+      <div class="callout-meta">
+        <span>Offer</span><strong>Complimentary paraffin hand treatment</strong>
+        <span style="margin-top:20px">Minimum</span><strong>Any mani or pedi service</strong>
+        <span style="margin-top:20px">New guests</span><strong>First visit only</strong>
+        <span style="margin-top:20px">Valid through</span><strong>Dec 31, 2026</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What guests are saying</span>
+        <h2>308 reviews. 4.2 stars.<br/>One common thread: the hands.</h2>
+      </div>
+      <div class="reviews">
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Friendly staff, clean facilities, great pampering. I come here every two weeks without fail."</blockquote>
+          <div class="reviewer">
+            <div class="avatar">M</div>
+            <div>
+              <div>Maya R.</div>
+              <div class="meta">Google · Regular since 2023</div>
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Linh does the most beautiful French I've ever had. Booked six weeks out and still worth the wait."</blockquote>
+          <div class="reviewer">
+            <div class="avatar">J</div>
+            <div>
+              <div>Jenna K.</div>
+              <div class="meta">Yelp · 2 visits</div>
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★☆</div>
+          <blockquote>"Quiet Tuesday mornings with a waterless pedicure — my favorite ritual. They remember my polish."</blockquote>
+          <div class="reviewer">
+            <div class="avatar">S</div>
+            <div>
+              <div>Sara L.</div>
+              <div class="meta">Google · Regular since 2021</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" style="background:var(--bg-2); padding: 96px 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The room</span>
+        <h2>Four technicians. Decades of hands.</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="ph"><span class="ph-label">linh.jpg · 4:5</span></div>
+          <span class="role">Owner · 22 yrs</span>
+          <h4>Linh Tran</h4>
+          <p class="spec">Classic & French manicures, gel structure, mother-of-pearl inlay.</p>
+        </div>
+        <div class="team-card">
+          <div class="ph"><span class="ph-label">thuy.jpg · 4:5</span></div>
+          <span class="role">Senior artist · 14 yrs</span>
+          <h4>Thuy Nguyen</h4>
+          <p class="spec">Nail art, chrome & cat-eye, hand-painted florals, weddings.</p>
+        </div>
+        <div class="team-card">
+          <div class="ph"><span class="ph-label">anh.jpg · 4:5</span></div>
+          <span class="role">Pedicure specialist · 9 yrs</span>
+          <h4>Anh Pham</h4>
+          <p class="spec">Waterless pedicures, callus work, reflexology-trained foot massage.</p>
+        </div>
+        <div class="team-card">
+          <div class="ph"><span class="ph-label">mai.jpg · 4:5</span></div>
+          <span class="role">Technician · 6 yrs</span>
+          <h4>Mai Le</h4>
+          <p class="spec">Dip powder, extensions, men's manicures, kids' manicures.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="section">
+    <div class="wrap">
+      <div class="about">
+        <div class="ph"><span class="ph-label">interior/front-room.jpg · 4:5</span></div>
+        <div>
+          <span class="eyebrow">Our story</span>
+          <h2 style="margin-top:12px">A neighborhood salon<br/>run like a favorite restaurant.</h2>
+          <p style="font-size:17px; margin-top:24px">
+            Linh Tran opened Heavenly Nails in 2004 on a quiet stretch of Waukegan Road
+            with a simple idea — treat every pair of hands like they belonged to a friend.
+            Twenty-two years later, most of our book is still neighbors.
+          </p>
+          <p style="font-size:17px">
+            We use fume-extracted stations, hospital-grade sterilization,
+            and polish lines we'd put on our own kids — because most of our guests come with theirs.
+          </p>
+          <a href="contact.html" class="btn ghost" style="margin-top:8px">Meet us in person →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="ig-head">
+        <div>
+          <span class="eyebrow">@heavenlynails.glenview</span>
+          <h2 style="margin-top:8px; font-size: clamp(28px, 3vw, 40px)">Freshly painted.</h2>
+        </div>
+        <a href="#" class="btn ghost">Follow on Instagram →</a>
+      </div>
+      <div class="ig-grid">
+        <div class="ph"><span class="ph-label">01</span></div>
+        <div class="ph"><span class="ph-label">02</span></div>
+        <div class="ph"><span class="ph-label">03</span></div>
+        <div class="ph"><span class="ph-label">04</span></div>
+        <div class="ph"><span class="ph-label">05</span></div>
+        <div class="ph"><span class="ph-label">06</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>HNS.bootstrap("home");</script>
+</body>
+</html>

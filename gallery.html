@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery — Heavenly Nails & Spa</title>
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+  .page-head {
+    padding: 80px 0 48px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 48px;
+  }
+  .page-head .wrap {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end;
+  }
+  .page-head h1 {
+    font-size: clamp(56px, 7vw, 96px);
+    font-style: italic; font-weight: 400;
+  }
+  .page-head h1 em { color: var(--accent); font-style: normal; }
+
+  .filters {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px;
+  }
+  .filter {
+    padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; cursor: pointer; background: transparent; color: var(--ink-2);
+  }
+  .filter:hover { border-color: var(--ink); color: var(--ink); }
+  .filter.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .masonry {
+    column-count: 4; column-gap: 16px;
+  }
+  .masonry .tile {
+    break-inside: avoid; margin-bottom: 16px; position: relative;
+    border-radius: 12px; overflow: hidden; display: block;
+  }
+  .masonry .tile .ph {
+    border-radius: 12px; border: 1px solid var(--line);
+  }
+  .masonry .tile[data-h="s"] .ph { aspect-ratio: 1/1; }
+  .masonry .tile[data-h="m"] .ph { aspect-ratio: 3/4; }
+  .masonry .tile[data-h="l"] .ph { aspect-ratio: 2/3; }
+  .masonry .tile[data-h="xl"] .ph { aspect-ratio: 3/5; }
+  .masonry .tile .caption {
+    position: absolute; left: 12px; bottom: 12px;
+    background: var(--bg); color: var(--ink); font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line);
+  }
+  .masonry .tile.real { overflow:hidden; border-radius: 12px; }
+  .masonry .tile.real img { width:100%; display:block; border-radius: 12px; }
+
+  .gallery-cta {
+    margin-top: 80px; padding: 56px; border-radius: 22px;
+    background: var(--bg-2); text-align: center;
+  }
+  .gallery-cta h2 { font-style: italic; font-size: clamp(36px, 4vw, 56px); }
+
+  @media (max-width: 1100px) { .masonry { column-count: 3; } }
+  @media (max-width: 800px) { .masonry { column-count: 2; } .page-head .wrap { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-palette="mocha" data-mode="light" data-cta="pill">
+<div id="site-header"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Gallery · Recent work</span>
+        <h1 style="margin-top:16px">Hands we've <em>held</em>.</h1>
+      </div>
+      <p>
+        A small sampling of last month's work — classic French, hand-painted florals,
+        chrome, and some quiet nudes. Screenshot anything to your booking.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="filters">
+      <button class="filter on">All work</button>
+      <button class="filter">French & classic</button>
+      <button class="filter">Nail art</button>
+      <button class="filter">Chrome & metallic</button>
+      <button class="filter">Seasonal</button>
+      <button class="filter">Bridal</button>
+      <button class="filter">Pedicures</button>
+    </div>
+
+    <div class="masonry">
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">classic-french · 01</span></div><div class="caption">French · Linh</div></div>
+      <div class="tile" data-h="l"><div class="ph"><span class="ph-label">floral-hand-paint · 02</span></div><div class="caption">Hand-paint · Thuy</div></div>
+      <div class="tile" data-h="s"><div class="ph"><span class="ph-label">chrome · 03</span></div><div class="caption">Chrome · Thuy</div></div>
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">nude-almond · 04</span></div><div class="caption">Nude almond</div></div>
+      <div class="tile" data-h="xl"><div class="ph"><span class="ph-label">bridal-micro · 05</span></div><div class="caption">Bridal</div></div>
+      <div class="tile" data-h="s"><div class="ph"><span class="ph-label">pedicure-red · 06</span></div><div class="caption">Pedicure · Anh</div></div>
+      <div class="tile" data-h="l"><div class="ph"><span class="ph-label">dip-powder · 07</span></div><div class="caption">Dip · Mai</div></div>
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">autumn-set · 08</span></div><div class="caption">Autumn</div></div>
+      <div class="tile" data-h="s"><div class="ph"><span class="ph-label">stiletto-black · 09</span></div><div class="caption">Stiletto</div></div>
+      <div class="tile" data-h="l"><div class="ph"><span class="ph-label">micro-french · 10</span></div><div class="caption">Micro-French</div></div>
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">pearl-accent · 11</span></div><div class="caption">Pearl inlay</div></div>
+      <div class="tile" data-h="xl"><div class="ph"><span class="ph-label">holiday-set · 12</span></div><div class="caption">Seasonal</div></div>
+      <div class="tile" data-h="s"><div class="ph"><span class="ph-label">cat-eye · 13</span></div><div class="caption">Cat-eye</div></div>
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">milky-white · 14</span></div><div class="caption">Milky white</div></div>
+      <div class="tile" data-h="l"><div class="ph"><span class="ph-label">terracotta · 15</span></div><div class="caption">Terracotta</div></div>
+      <div class="tile" data-h="s"><div class="ph"><span class="ph-label">kids-mani · 16</span></div><div class="caption">Kids'</div></div>
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">coffin-mauve · 17</span></div><div class="caption">Coffin</div></div>
+      <div class="tile" data-h="l"><div class="ph"><span class="ph-label">gel-structure · 18</span></div><div class="caption">Gel structure</div></div>
+      <div class="tile" data-h="s"><div class="ph"><span class="ph-label">foil-tips · 19</span></div><div class="caption">Foil tips</div></div>
+      <div class="tile" data-h="m"><div class="ph"><span class="ph-label">glazed-donut · 20</span></div><div class="caption">Glazed</div></div>
+    </div>
+
+    <div class="gallery-cta">
+      <span class="eyebrow">Love something here?</span>
+      <h2 style="margin-top:12px">Screenshot it — bring it to your appointment.</h2>
+      <p style="max-width:48ch; margin: 20px auto 28px">
+        Our artists love a reference. Book a slot with Thuy for hand-painted work,
+        or any technician for classic finishes.
+      </p>
+      <a href="book.html" class="btn lg">Book your look →</a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>
+  HNS.bootstrap("gallery");
+  // Filter UI (visual only)
+  document.querySelectorAll(".filter").forEach(f => {
+    f.addEventListener("click", () => {
+      document.querySelectorAll(".filter").forEach(x => x.classList.remove("on"));
+      f.classList.add("on");
+    });
+  });
+</script>
+</body>
+</html>
